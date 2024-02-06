@@ -76,15 +76,15 @@
 #define L2_R4 HR_R4
 
 // layer 3 homerow mods
-#define L2_L4 HR_L4
-#define L2_L3 HR_L3
-#define L2_L2 HR_L2
-#define L2_L1 HR_L1
+#define L3_L4 HR_L4
+#define L3_L3 HR_L3
+#define L3_L2 HR_L2
+#define L3_L1 HR_L1
 
-#define L2_R1 HR_R1
-#define L2_R2 HR_R2
-#define L2_R3 HR_R3
-#define L2_R4 HR_R4
+#define L3_R1 HR_R1
+#define L3_R2 HR_R2
+#define L3_R3 HR_R3
+#define L3_R4 HR_R4
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
