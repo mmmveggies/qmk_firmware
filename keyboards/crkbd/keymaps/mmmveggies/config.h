@@ -1,3 +1,4 @@
 #pragma once
 
-#define MASTER_LEFT
+# this side's USB port is occupied
+define MASTER_RIGHT
