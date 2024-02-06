@@ -86,11 +86,9 @@
 #define L3_R3 HR_R3
 #define L3_R4 HR_R4
 
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x5_3(
     KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   ,
-//  KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                   KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN,
     L0_L4  , L0_L3  , L0_L2  , L0_L1  , KC_G   ,                   KC_H   , L0_R1  , L0_R2  , L0_R3  , L0_R4  ,
     KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,
     /*             */ LAYER_1, KC_ESC , KC_SPC ,                   KC_BSPC, KC_ENT , LAYER_2
@@ -98,7 +96,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_split_3x5_3(
     KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,
-//  KC_GRV , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_QUOT, KC_MINS, KC_EQL , KC_LBRC, KC_RBRC,
     L1_L4  , L1_L3  , L1_L2  , L1_L1  , XXXXXXX,                   KC_QUOT, L1_R1  , L1_R2  , L1_R3  , L1_R4  ,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_PIPE, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX,
     /*             */ _______, _______, _______,                   _______, _______, LAYER_3
@@ -106,7 +103,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_split_3x5_3(
     KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                   KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 ,
-//  KC_TAB , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX,
     L2_L4  , L2_L3  , L2_L2  , L2_L1  , XXXXXXX,                   KC_LEFT, L2_R1  , L2_R2  , L2_R3  , L2_R4  ,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDN, KC_PGUP, KC_END , XXXXXXX,
     /*             */ LAYER_3, _______, _______,                   _______, _______, _______
@@ -114,7 +110,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [3] = LAYOUT_split_3x5_3(
     KC_F11 , KC_F12 , KC_F13 , KC_F14 , KC_F15 ,                   KC_F16 , KC_F17 , KC_F18 , KC_F19 , XXXXXXX,
-//  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     L3_L4  , L3_L3  , L3_L2  , L3_L1  , XXXXXXX,                   XXXXXXX, L3_R1  , L3_R2  , L3_R3  , L3_R4  ,
     XXXXXXX, XXXXXXX, KC_CAPS, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     /*             */ _______, _______, _______,                   _______, _______, _______
