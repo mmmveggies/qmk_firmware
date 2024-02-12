@@ -21,26 +21,28 @@
  * Homerow mod helpers, we try CAGS_SGAC
  * See https://precondition.github.io/home-row-mods#cags
  */
-#define HR_L4 MOD_LCTL
-#define HR_L3 MOD_LALT
-#define HR_L2 MOD_LGUI
-#define HR_L1 MOD_LSFT
 
-#define HR_R1 MOD_RSFT
-#define HR_R2 MOD_RGUI
-#define HR_R3 MOD_RALT
-#define HR_R4 MOD_RCTL
+// used when the keys are only mods
+#define HRM_L4 KC_LCTL
+#define HRM_L3 KC_LALT
+#define HRM_L2 KC_LGUI
+#define HRM_L1 KC_LSFT
 
-// helpers for mod-tap
-#define MT_L4(key) MT(HR_L4, key)
-#define MT_L3(key) MT(HR_L3, key)
-#define MT_L2(key) MT(HR_L2, key)
-#define MT_L1(key) MT(HR_L1, key)
+#define HRM_R1 KC_RSFT
+#define HRM_R2 KC_RGUI
+#define HRM_R3 KC_RALT
+#define HRM_R4 KC_RCTL
 
-#define MT_R1(key) MT(HR_R1, key)
-#define MT_R2(key) MT(HR_R2, key)
-#define MT_R3(key) MT(HR_R3, key)
-#define MT_R4(key) MT(HR_R4, key)
+// used when the keys are mod-tap
+#define MT_L4(key) MT(MOD_LCTL, key)
+#define MT_L3(key) MT(MOD_LALT, key)
+#define MT_L2(key) MT(MOD_LGUI, key)
+#define MT_L1(key) MT(MOD_LSFT, key)
+
+#define MT_R1(key) MT(MOD_RSFT, key)
+#define MT_R2(key) MT(MOD_RGUI, key)
+#define MT_R3(key) MT(MOD_RALT, key)
+#define MT_R4(key) MT(MOD_RCTL, key)
 
 // layer 0 homerow mods
 #define L0_L4 MT_L4(KC_A)
@@ -55,9 +57,9 @@
 
 // layer 1 homerow mods
 #define L1_L4 MT_L4(KC_GRV)
-#define L1_L3 HR_L3
-#define L1_L2 HR_L2
-#define L1_L1 HR_L1
+#define L1_L3 HRM_L3
+#define L1_L2 HRM_L2
+#define L1_L1 HRM_L1
 
 #define L1_R1 MT_R1(KC_MINS)
 #define L1_R2 MT_R2(KC_EQL)
@@ -66,25 +68,28 @@
 
 // layer 2 homerow mods
 #define L2_L4 MT_L4(KC_TAB)
-#define L2_L3 HR_L3
-#define L2_L2 HR_L2
-#define L2_L1 HR_L1
+#define L2_L3 HRM_L3
+#define L2_L2 HRM_L2
+#define L2_L1 HRM_L1
 
 #define L2_R1 MT_R1(KC_DOWN)
 #define L2_R2 MT_R2(KC_UP)
 #define L2_R3 MT_R3(KC_RGHT)
-#define L2_R4 HR_R4
+#define L2_R4 HRM_R4
 
 // layer 3 homerow mods
-#define L3_L4 HR_L4
-#define L3_L3 HR_L3
-#define L3_L2 HR_L2
-#define L3_L1 HR_L1
+#define L3_L4 HRM_L4
+#define L3_L3 HRM_L3
+#define L3_L2 HRM_L2
+#define L3_L1 HRM_L1
 
-#define L3_R1 HR_R1
-#define L3_R2 HR_R2
-#define L3_R3 HR_R3
-#define L3_R4 HR_R4
+#define L3_R1 HRM_R1
+#define L3_R2 HRM_R2
+#define L3_R3 HRM_R3
+#define L3_R4 HRM_R4
+
+// helpers
+#define SCR_CAP C(S(G(KC_4)))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x5_3(
@@ -97,14 +102,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_split_3x5_3(
     KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,
     L1_L4  , L1_L3  , L1_L2  , L1_L1  , XXXXXXX,                   KC_QUOT, L1_R1  , L1_R2  , L1_R3  , L1_R4  ,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_PIPE, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX,
+    G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX,                   KC_PIPE, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX,
     /*             */ _______, _______, _______,                   _______, _______, LAYER_3
   ),
 
   [2] = LAYOUT_split_3x5_3(
     KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  ,                   KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 ,
     L2_L4  , L2_L3  , L2_L2  , L2_L1  , XXXXXXX,                   KC_LEFT, L2_R1  , L2_R2  , L2_R3  , L2_R4  ,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDN, KC_PGUP, KC_END , XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDN, KC_PGUP, KC_END , SCR_CAP,
     /*             */ LAYER_3, _______, _______,                   _______, _______, _______
   ),
 
