@@ -90,6 +90,7 @@
 
 // helpers
 #define SCR_CAP C(S(G(KC_4)))
+#define SCR_REC S(G(KC_5))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x5_3(
@@ -116,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = LAYOUT_split_3x5_3(
     KC_F11 , KC_F12 , KC_F13 , KC_F14 , KC_F15 ,                   KC_F16 , KC_F17 , KC_F18 , KC_F19 , XXXXXXX,
     L3_L4  , L3_L3  , L3_L2  , L3_L1  , XXXXXXX,                   XXXXXXX, L3_R1  , L3_R2  , L3_R3  , L3_R4  ,
-    XXXXXXX, XXXXXXX, KC_CAPS, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, KC_CAPS, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SCR_REC,
     /*             */ _______, _______, _______,                   _______, _______, _______
   )
 };
