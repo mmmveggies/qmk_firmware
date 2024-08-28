@@ -5,6 +5,7 @@
 #define LAYER_2 MO(2)
 #define LAYER_3 MO(3)
 #define L4_SPC LT(4, KC_SPC)
+#define L5_ESC LT(5, KC_ESC)
 
 /*
  * Homerow mod helpers, we try CAGS_SGAC
@@ -91,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   ,
     L0_L4  , L0_L3  , L0_L2  , L0_L1  , KC_G   ,                   KC_H   , L0_R1  , L0_R2  , L0_R3  , L0_R4  ,
     KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,
-    /*             */ LAYER_1, KC_ESC , L4_SPC ,                   KC_BSPC, KC_ENT , LAYER_2
+    /*             */ LAYER_1, L5_ESC , L4_SPC ,                   KC_BSPC, KC_ENT , LAYER_2
   ),
 
   [1] = LAYOUT_split_3x5_3(
@@ -117,17 +118,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // All of these have a tmux prefix sent with them
   [4] = LAYOUT_split_3x5_3(
-    KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,
     XXXXXXX, KC_S   , XXXXXXX, XXXXXXX, XXXXXXX,                   TM_LEFT, TM_UP  , TM_DOWN, TM_RGHT, XXXXXXX,
     XXXXXXX, XXXXXXX, KC_C   , XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, KC_COMM, XXXXXXX, XXXXXXX,
+    /*             */ _______, _______, _______,                   _______, _______, _______
+  ),
+
+  // Navigation?
+  [5] = LAYOUT_split_3x5_3(
+    KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     /*             */ _______, _______, _______,                   _______, _______, _______
   )
 };
 
 // https://getreuer.info/posts/keyboards/macros3/index.html#prefixing-layer
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (IS_LAYER_ON(4) && record->event.pressed) {
-    tap_code16(C(KC_T));  // Tap Ctrl+T, prefix of tmux
+  bool pressed = record->event.pressed;
+
+  // Tap Ctrl+T, prefix of tmux
+  if (IS_LAYER_ON(4) && pressed) {
+    tap_code16(C(KC_T));
+  }
+
+  // Easier Aerospace worskspace switching
+  if (IS_LAYER_ON(5)) {
+    if (pressed) {
+      register_code(KC_LALT);
+    } else {
+      unregister_code(KC_LALT);
+    }
   }
 
   // Other macros...
