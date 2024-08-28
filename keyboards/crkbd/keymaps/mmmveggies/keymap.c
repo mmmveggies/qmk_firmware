@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // All of these have a tmux prefix sent with them
   [4] = LAYOUT_split_3x5_3(
     KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   TM_LEFT, TM_UP  , TM_DOWN, TM_RGHT, XXXXXXX,
+    XXXXXXX, KC_S   , XXXXXXX, XXXXXXX, XXXXXXX,                   TM_LEFT, TM_UP  , TM_DOWN, TM_RGHT, XXXXXXX,
     XXXXXXX, XXXXXXX, KC_C   , XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, KC_COMM, XXXXXXX, XXXXXXX,
     /*             */ _______, _______, _______,                   _______, _______, _______
   )
