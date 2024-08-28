@@ -4,18 +4,7 @@
 #define LAYER_1 MO(1)
 #define LAYER_2 MO(2)
 #define LAYER_3 MO(3)
-
-// unused now, from autoshift layout
-/*
-#define CTRLESC MT(MOD_LCTL, KC_ESC)
-#define SHFTSPC MT(MOD_LSFT, KC_SPC)
-#define ALTBSPC MT(MOD_LALT, KC_BSPC)
-#define GUIENTR MT(MOD_LGUI, KC_ENT)
-#define X_C_SPC C(KC_SPC)
-#define X_G_ENT G(KC_ENT)
-#define X_S_SPC S(KC_SPC)
-
-*/
+#define L4_SPC LT(4, KC_SPC)
 
 /*
  * Homerow mod helpers, we try CAGS_SGAC
@@ -92,12 +81,17 @@
 #define SCR_CAP C(S(G(KC_4)))
 #define SCR_REC S(G(KC_5))
 
+#define TM_LEFT S(KC_LEFT)
+#define TM_UP   S(KC_9)
+#define TM_DOWN S(KC_0)
+#define TM_RGHT S(KC_RGHT)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x5_3(
     KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   ,
     L0_L4  , L0_L3  , L0_L2  , L0_L1  , KC_G   ,                   KC_H   , L0_R1  , L0_R2  , L0_R3  , L0_R4  ,
     KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                   KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,
-    /*             */ LAYER_1, KC_ESC , KC_SPC ,                   KC_BSPC, KC_ENT , LAYER_2
+    /*             */ LAYER_1, KC_ESC , L4_SPC ,                   KC_BSPC, KC_ENT , LAYER_2
   ),
 
   [1] = LAYOUT_split_3x5_3(
@@ -119,5 +113,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     L3_L4  , L3_L3  , L3_L2  , L3_L1  , XXXXXXX,                   XXXXXXX, L3_R1  , L3_R2  , L3_R3  , L3_R4  ,
     XXXXXXX, XXXXXXX, KC_CAPS, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SCR_REC,
     /*             */ _______, _______, _______,                   _______, _______, _______
+  ),
+
+  // All of these have a tmux prefix sent with them
+  [4] = LAYOUT_split_3x5_3(
+    KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   TM_LEFT, TM_UP  , TM_DOWN, TM_RGHT, XXXXXXX,
+    XXXXXXX, XXXXXXX, KC_C   , XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, KC_COMM, XXXXXXX, XXXXXXX,
+    /*             */ _______, _______, _______,                   _______, _______, _______
   )
 };
+
+// https://getreuer.info/posts/keyboards/macros3/index.html#prefixing-layer
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (IS_LAYER_ON(4) && record->event.pressed) {
+    tap_code16(C(KC_T));  // Tap Ctrl+T, prefix of tmux
+  }
+
+  // Other macros...
+  return true;
+}
